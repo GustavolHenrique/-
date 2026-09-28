@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — motion</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1254px; height: 1254px; background: #000; overflow: hidden; }
+  #stage { position: absolute; inset: 0; background: #050505; overflow: hidden; }
+  #cam { position: absolute; inset: 0; transform-origin: 38% 45%; }
+  svg#deco { position: absolute; inset: 0; width: 1254px; height: 1254px; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .mask { overflow: hidden; display: inline-block; vertical-align: top; }
+  .mask > span { display: inline-block; will-change: transform; }
+  .ch { display: inline-block; will-change: transform; }
+
+  /* logo */
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             transform-origin: left center; display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox .ast { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; display: inline-block; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 122px; top: 257px; font-size: 22px; letter-spacing: 5px; font-weight: 400; }
+  .headline { left: 112px; font-size: 128px; letter-spacing: -4px; line-height: 1; }
+  #h1 { top: 286px; }
+  #h2 { top: 388px; }
+  #shine { position: absolute; left: 0; top: 0; width: 1254px; height: 1254px; pointer-events: none; mix-blend-mode: overlay; }
+
+  #sub { left: 112px; top: 538px; font-size: 54px; letter-spacing: -1.5px; line-height: 1.1; }
+  #subBar { position: absolute; left: 108px; top: 540px; height: 60px; width: 770px; background: #fff; transform-origin: left center; }
+
+  .num { left: 116px; font-size: 84px; letter-spacing: -4px; line-height: 1; height: 80px; overflow: hidden; }
+  .num .roll { display: inline-block; vertical-align: top; }
+  .num .digit { display: inline-block; height: 80px; overflow: hidden; vertical-align: top; }
+  .num .strip { display: flex; flex-direction: column; }
+  .num .strip span { height: 80px; line-height: 80px; display: block; }
+  .rule { position: absolute; left: 122px; width: 113px; height: 2px; background: #fff; transform-origin: left center; }
+  .item { left: 288px; font-size: 26.5px; line-height: 37px; font-weight: 400; letter-spacing: 0.1px; }
+  .item .ln { display: block; }
+
+  #ctaLine { position: absolute; left: 472px; top: 1135px; width: 74px; height: 3px; background: #fff; transform-origin: left center; }
+  #cta { left: 579px; top: 1119px; font-size: 26px; line-height: 34px; font-weight: 700; letter-spacing: -0.2px; }
+  #cta .mask { display: block; }
+
+  #grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: screen; pointer-events: none; }
+  #vignette { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 40% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%); }
+  #flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="cam">
+    <svg id="deco" viewBox="0 0 1254 1254">
+      <defs>
+        <mask id="mTR"><circle id="mTRc" cx="1320" cy="-320" r="640" fill="none" stroke="#fff" stroke-width="10" pathLength="1" stroke-dasharray="1 1" transform="rotate(90 1320 -320)"/></mask>
+        <mask id="mBL"><circle id="mBLc" cx="-40" cy="1370" r="400" fill="none" stroke="#fff" stroke-width="10" pathLength="1" stroke-dasharray="1 1" transform="rotate(-90 -40 1370)"/></mask>
+      </defs>
+      <g stroke="#fff" fill="none" stroke-linecap="round">
+        <!-- grid lines -->
+        <line class="ln-draw" x1="1035" y1="0" x2="1035" y2="420" stroke-width="1.6" pathLength="1"/>
+        <line class="ln-draw" x1="930" y1="135" x2="1254" y2="135" stroke-width="1.6" pathLength="1"/>
+        <line class="ln-draw" x1="930" y1="398" x2="1254" y2="398" stroke-width="1.2" stroke-opacity=".7" pathLength="1"/>
+        <line class="ln-draw" x1="0" y1="1103" x2="1254" y2="1103" stroke-width="1.6" pathLength="1"/>
+        <line class="ln-draw" x1="249" y1="1254" x2="249" y2="1010" stroke-width="1.6" pathLength="1"/>
+        <!-- circles -->
+        <circle class="ln-draw" id="cTR" cx="1135" cy="0" r="305" stroke-width="1.8" pathLength="1" transform="rotate(100 1135 0)"/>
+        <g mask="url(#mTR)"><circle id="dTR" cx="1320" cy="-320" r="640" stroke-width="2" stroke-dasharray="9 9"/></g>
+        <circle class="ln-draw" id="cBL" cx="0" cy="1205" r="165" stroke-width="1.8" pathLength="1" transform="rotate(-70 0 1205)"/>
+        <g mask="url(#mBL)"><circle id="dBL" cx="-40" cy="1370" r="400" stroke-width="2" stroke-dasharray="9 9"/></g>
+      </g>
+      <g id="dotsTR" fill="#fff"></g>
+      <g id="dotsBL" fill="#fff"></g>
+      <g id="nodes">
+        <circle class="pulse" cx="1035" cy="135" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle class="node" cx="1035" cy="135" r="9" fill="#fff"/>
+        <circle class="pulse" cx="249" cy="1103" r="9" fill="none" stroke="#fff" stroke-width="2"/>
+        <circle class="node" cx="249" cy="1103" r="8" fill="#fff"/>
+      </g>
+    </svg>
+
+    <div class="abs serif mask" id="logoPrivacy"><span>Privacy</span></div>
+    <div class="abs" id="logoBox"><span class="ast">*</span><span class="ast">*</span><span class="ast">*</span></div>
+    <div class="abs serif mask" id="logoConsent"><span>Consent</span></div>
+
+    <div class="abs sans" id="label">CONCEITO ESSENCIAL</div>
+    <div class="abs serif headline" id="h1" data-split>O que é</div>
+    <div class="abs serif headline" id="h2" data-split>privacidade?</div>
+
+    <div class="abs serif" id="sub">Privacidade digital e de dados</div>
+    <div id="subBar"></div>
+
+    <div class="abs serif num" id="n1" style="top:640px" data-n="1"></div>
+    <div class="rule" id="r1" style="top:723px"></div>
+    <div class="abs sans item" id="i1" style="top:630px">
+      <span class="ln">Protege informações online, como nomes,</span>
+      <span class="ln">CPFs, histórico médico e hábitos de</span>
+      <span class="ln">navegação.</span>
+    </div>
+
+    <div class="abs serif num" id="n2" style="top:785px" data-n="2"></div>
+    <div class="rule" id="r2" style="top:870px"></div>
+    <div class="abs sans item" id="i2" style="top:786px">
+      <span class="ln">No Brasil, é regulamentada pela Lei Geral</span>
+      <span class="ln">de Proteção de Dados — LGPD.</span>
+    </div>
+
+    <div class="abs serif num" id="n3" style="top:915px" data-n="3"></div>
+    <div class="rule" id="r3" style="top:1000px"></div>
+    <div class="abs sans item" id="i3" style="top:907px">
+      <span class="ln">Garante o direito de acessar, corrigir ou</span>
+      <span class="ln">solicitar a exclusão dos dados tratados por</span>
+      <span class="ln">empresas e órgãos públicos.</span>
+    </div>
+
+    <div id="ctaLine"></div>
+    <div class="abs sans" id="cta">
+      <span class="mask"><span>Como a Privacy Consent pode contribuir</span></span>
+      <span class="mask"><span>para a gestão da privacidade digital e</span></span>
+      <span class="mask"><span>dos dados?</span></span>
+    </div>
+  </div>
+  <canvas id="shine" width="1254" height="1254"></canvas>
+  <div id="vignette"></div>
+  <canvas id="grain" width="627" height="627" style="width:1254px;height:1254px"></canvas>
+  <div id="flash"></div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const P = (t, start, dur) => clamp((t - start) / dur);
+const lerp = (a, b, k) => a + (b - a) * k;
+const eOutExpo = x => x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+const eOutCubic = x => 1 - Math.pow(1 - x, 3);
+const eOutQuart = x => 1 - Math.pow(1 - x, 4);
+const eInOutCubic = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eInOutQuint = x => x < .5 ? 16 * x ** 5 : 1 - Math.pow(-2 * x + 2, 5) / 2;
+const eOutBack = (x, s = 1.7) => 1 + (s + 1) * Math.pow(x - 1, 3) + s * Math.pow(x - 1, 2);
+
+// ---- build dynamic DOM ----
+function dots(g, x0, y0, cols, rows, dx, dy, r) {
+  const out = [];
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+    g.appendChild(c); out.push({ el: c, i, j });
+  }
+  return out;
+}
+const dotsTR = dots($('#dotsTR'), 1063, 30, 5, 4, 29.5, 28.5, 3.4);
+const dotsBL = dots($('#dotsBL'), 295, 1141, 5, 3, 27.5, 27, 3.2);
+
+$$('[data-split]').forEach(el => {
+  el.innerHTML = [...el.textContent].map(c =>
+    `<span class="mask" style="padding:0 2px;margin:0 -2px;padding-bottom:18px;margin-bottom:-18px"><span class="ch">${c === ' ' ? '&nbsp;' : c}</span></span>`).join('');
+});
+
+$$('.num').forEach(el => {
+  const n = +el.dataset.n;
+  const strip = Array.from({ length: 10 + n + 1 }, (_, k) => `<span>${k % 10}</span>`).join('');
+  el.innerHTML = `<span class="digit"><span class="strip s0"><span>0</span></span></span><span class="digit"><span class="strip s1">${strip}</span></span>`;
+  el.dataset.target = 10 + n;
+});
+
+// seeded grain
+function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+const gctx = $('#grain').getContext('2d');
+const gimg = gctx.createImageData(627, 627);
+function grain(frame) {
+  const r = rng(1000 + frame * 7919);
+  const d = gimg.data;
+  for (let k = 0; k < d.length; k += 4) { const v = r() * 255 | 0; d[k] = d[k + 1] = d[k + 2] = v; d[k + 3] = 255; }
+  gctx.putImageData(gimg, 0, 0);
+}
+
+const sctx = $('#shine').getContext('2d');
+
+// ---- timeline, t in seconds (0..5) ----
+function render(t, frame = 0) {
+  // camera: punch-in settle, then slow drift
+  const settle = eOutExpo(P(t, 0, 1.6));
+  const drift = P(t, 1.2, 3.8);
+  const sc = lerp(1.12, 1.0, settle) + 0.025 * eInOutCubic(drift);
+  const rot = lerp(-1.2, 0, settle);
+  const ty = lerp(30, 0, settle) - 8 * eInOutCubic(drift);
+  $('#cam').style.transform = `translateY(${ty}px) scale(${sc}) rotate(${rot}deg)`;
+
+  // opening flash
+  $('#flash').style.opacity = (1 - eOutCubic(P(t, 0, .35))) * .9;
+
+  // grid lines draw
+  const lineStarts = [0.05, 0.15, 0.3, 0.1, 0.25];
+  $$('line.ln-draw').forEach((l, k) => {
+    const p = eInOutQuint(P(t, lineStarts[k], 0.9));
+    l.style.strokeDasharray = '1 1';
+    l.style.strokeDashoffset = 1 - p;
+  });
+  // solid circles
+  [['#cTR', 0.2, 1.3], ['#cBL', 0.35, 1.2]].forEach(([id, s, d]) => {
+    const p = eInOutCubic(P(t, s, d));
+    const c = $(id); c.style.strokeDasharray = '1 1'; c.style.strokeDashoffset = 1 - p;
+  });
+  // dashed circles: reveal mask + marching dashes + slow spin
+  $('#mTRc').style.strokeDashoffset = 1 - eInOutCubic(P(t, 0.1, 1.5));
+  $('#mBLc').style.strokeDashoffset = 1 - eInOutCubic(P(t, 0.4, 1.4));
+  $('#dTR').style.strokeDashoffset = -t * 22;
+  $('#dBL').style.strokeDashoffset = t * 22;
+  $('#cTR').setAttribute('transform', `rotate(${100 + t * 4} 1135 0)`);
+
+  // dot grids pop (diagonal wave) + twinkle
+  dotsTR.forEach(({ el, i, j }) => {
+    const s = eOutBack(P(t, 0.55 + (i + j) * 0.045, 0.45), 3);
+    const tw = 0.75 + 0.25 * Math.sin(t * 5 + i * 1.3 + j * 2.1);
+    el.style.transform = `scale(${s})`; el.style.transformOrigin = `${el.getAttribute('cx')}px ${el.getAttribute('cy')}px`;
+    el.style.opacity = t > 1.6 ? tw : 1;
+  });
+  dotsBL.forEach(({ el, i, j }) => {
+    const s = eOutBack(P(t, 3.3 + (i + j) * 0.045, 0.45), 3);
+    el.style.transform = `scale(${s})`; el.style.transformOrigin = `${el.getAttribute('cx')}px ${el.getAttribute('cy')}px`;
+  });
+
+  // node dots + pulse rings
+  const nodes = $$('#nodes .node'), pulses = $$('#nodes .pulse');
+  [[0.9, 0], [1.05, 1]].forEach(([s, k]) => {
+    const n = nodes[k];
+    const p = eOutBack(P(t, s, 0.5), 3);
+    n.style.transformOrigin = `${n.getAttribute('cx')}px ${n.getAttribute('cy')}px`;
+    n.style.transform = `scale(${p})`;
+    const pu = pulses[k];
+    const cyc = ((t - s) % 1.4 + 1.4) % 1.4 / 1.4;
+    const on = t > s ? 1 : 0;
+    pu.setAttribute('r', 9 + eOutCubic(cyc) * 38);
+    pu.style.opacity = on * (1 - cyc) * .8;
+  });
+
+  // logo
+  const lp = eOutExpo(P(t, 0.3, 0.9));
+  $('#logoPrivacy > span').style.transform = `translateY(${lerp(105, 0, lp)}%)`;
+  const bp = eOutExpo(P(t, 0.5, 0.7));
+  $('#logoBox').style.transform = `scaleX(${bp})`;
+  $$('#logoBox .ast').forEach((a, k) => {
+    const p = P(t, 0.75 + k * 0.08, 0.6);
+    const spin = eOutBack(p, 2.2);
+    a.style.transform = `rotate(${lerp(-180, 0, spin)}deg) scale(${eOutBack(p, 2.5)})`;
+    a.style.opacity = clamp(p * 3);
+  });
+  const cp = eOutExpo(P(t, 0.65, 0.8));
+  $('#logoConsent > span').style.transform = `translateX(${lerp(-110, 0, cp)}%)`;
+
+  // label: tracking in
+  const lb = eOutCubic(P(t, 0.8, 1.0));
+  $('#label').style.letterSpacing = `${lerp(22, 5, lb)}px`;
+  $('#label').style.opacity = clamp(P(t, 0.8, 0.5));
+  $('#label').style.filter = `blur(${lerp(6, 0, lb)}px)`;
+
+  // headline chars rise with stagger
+  [['#h1', 1.0], ['#h2', 1.18]].forEach(([id, s]) => {
+    $$(id + ' .ch').forEach((c, k) => {
+      const p = eOutExpo(P(t, s + k * 0.035, 0.9));
+      c.style.transform = `translateY(${lerp(115, 0, p)}%) rotate(${lerp(8, 0, p)}deg)`;
+    });
+  });
+
+  // shine sweep across headline
+  sctx.clearRect(0, 0, 1254, 1254);
+  const sp = eInOutCubic(P(t, 3.9, 0.9));
+  if (sp > 0 && sp < 1) {
+    const x = lerp(-300, 1100, sp);
+    const g = sctx.createLinearGradient(x - 160, 0, x + 160, 0);
+    g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(.5, 'rgba(255,255,255,.9)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    sctx.save(); sctx.translate(0, 0); sctx.transform(1, 0, -0.35, 1, 0, 0);
+    sctx.fillStyle = g; sctx.fillRect(x - 400, 270, 900, 350); sctx.restore();
+  }
+
+  // subtitle: bar wipe reveal
+  const w1 = eInOutQuint(P(t, 1.75, 0.45));
+  const w2 = eInOutQuint(P(t, 2.2, 0.45));
+  const bar = $('#subBar');
+  if (t < 2.2) { bar.style.transformOrigin = 'left center'; bar.style.transform = `scaleX(${w1})`; }
+  else { bar.style.transformOrigin = 'right center'; bar.style.transform = `scaleX(${1 - w2})`; }
+  $('#sub').style.opacity = t >= 2.2 ? 1 : 0;
+
+  // items
+  [[1, 2.35], [2, 2.6], [3, 2.85]].forEach(([n, s]) => {
+    const num = $('#n' + n);
+    const rp = eOutQuart(P(t, s, 0.9));
+    const target = +num.dataset.target;
+    num.querySelector('.s1').style.transform = `translateY(${-rp * target * 80}px)`;
+    num.querySelector('.s0').style.transform = `translateY(${lerp(100, 0, eOutExpo(P(t, s, 0.6)))}%)`;
+    num.style.opacity = clamp(P(t, s, 0.15));
+    num.style.filter = `blur(${lerp(0, 0, rp)}px)`;
+    $('#r' + n).style.transform = `scaleX(${eOutExpo(P(t, s + 0.1, 0.8))})`;
+    $$('#i' + n + ' .ln').forEach((ln, k) => {
+      const p = eOutCubic(P(t, s + 0.12 + k * 0.07, 0.7));
+      ln.style.transform = `translateX(${lerp(60, 0, p)}px)`;
+      ln.style.opacity = p;
+      ln.style.filter = `blur(${lerp(8, 0, p)}px)`;
+    });
+  });
+
+  // CTA
+  $('#ctaLine').style.transform = `scaleX(${eOutExpo(P(t, 3.35, 0.8))})`;
+  $$('#cta .mask > span').forEach((s, k) => {
+    const p = eOutExpo(P(t, 3.5 + k * 0.09, 0.8));
+    s.style.transform = `translateY(${lerp(110, 0, p)}%)`;
+  });
+
+  grain(frame);
+}
+window.render = render;
+window.ready = document.fonts.ready.then(() => true);
+render(5);
+</script>
+</body>
+</html>
