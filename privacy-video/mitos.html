@@ -26,19 +26,17 @@
   #labelRule { position: absolute; left: 400px; top: 274px; width: 108px; height: 1.5px; background: #fff; }
 
   #title { left: 108px; top: 300px; font-size: 100px; letter-spacing: -3.4px; line-height: 104px; }
-  #title .hl { display: inline-block; background: #fff; color: #070707; border-radius: 12px;
-               padding: 0 18px 10px; margin-left: -6px; text-shadow: none; line-height: 98px; }
 
   .card { position: absolute; left: 112px; width: 1030px; height: 178px; border: 2.5px solid #fff; border-radius: 18px;
           box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
   .card .tag { position: absolute; display: flex; align-items: center; gap: 10px;
                font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3.5px; color: #fff; }
   .card .tag svg { flex: none; }
-  .card .myth-tag { left: 30px; top: 26px; opacity: .6; }
+  .card .myth-tag { left: 30px; top: 26px; }
   .card .true-tag { left: 470px; top: 26px; }
   .card .myth { position: absolute; left: 30px; top: 62px; width: 375px; white-space: normal;
                 font-family: 'Playfair Display', serif; font-weight: 800; font-size: 29px; line-height: 36px; letter-spacing: -.6px;
-                color: rgba(255,255,255,.62); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: rgba(255,255,255,.55); }
+                color: #fff; }
   .card .div { position: absolute; left: 434px; top: 26px; bottom: 26px; width: 2px; background: #fff; }
   .card .truth { position: absolute; left: 470px; top: 60px; width: 530px; white-space: normal;
                  font-family: 'Sora', sans-serif; font-size: 20.5px; line-height: 29px; color: #fff; letter-spacing: -.25px; }
@@ -80,7 +78,7 @@
   <div class="abs sans" id="label">MITO × VERDADE</div>
   <div id="labelRule"></div>
 
-  <div class="abs serif glow" id="title">LGPD: 4 mitos que<br><span class="hl">ainda custam caro.</span></div>
+  <div class="abs serif glow" id="title">LGPD: 4 mitos que<br>ainda custam caro.</div>
 
   <template id="icons">
     <svg data-x width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="10" r="8.6"/><path d="M6.8 6.8 L13.2 13.2 M13.2 6.8 L6.8 13.2"/></svg>
@@ -111,7 +109,7 @@
   document.getElementById('cards').innerHTML = items.map(([m, t], i) => `
     <div class="card" style="top:${566 + i * 206}px">
       <div class="tag myth-tag">${icon('x')}MITO</div>
-      <div class="myth">${m}</div>
+      <div class="myth">“${m}”</div>
       <div class="div"></div>
       <div class="tag true-tag">${icon('ok')}VERDADE</div>
       <div class="truth">${t}</div>
