@@ -1,5 +1,5 @@
-// Exports a static 1254px HTML post to PNG at a given output size.
-// Usage: node still.mjs <page.html> <out.png> [size=1080]
+// Exports a static 1254px-wide HTML post to PNG at a given output size.
+// Usage: node still.mjs <page.html> <out.png> [width=1080]
 import { createRequire } from 'module';
 import path from 'path';
 
@@ -12,5 +12,8 @@ const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1254, height: 1254 }, deviceScaleFactor: Number(size) / 1254 });
 await page.goto('file://' + path.resolve(DIR, src));
 await page.evaluate(() => window.ready);
+// Pages taller than square (e.g. 4:5 LinkedIn) declare their height on <html>.
+const height = await page.evaluate(() => document.documentElement.offsetHeight);
+await page.setViewportSize({ width: 1254, height });
 await page.screenshot({ path: path.resolve(DIR, out) });
 await browser.close();

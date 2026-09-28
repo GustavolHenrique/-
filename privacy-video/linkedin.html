@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — LinkedIn</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 40% 35%, #121212 0%, #070707 70%); }
+  svg#deco { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; left: 418px; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+
+  #title { left: 108px; top: 306px; font-size: 104px; letter-spacing: -3.5px; line-height: 104px; }
+  #title .hl { display: inline-block; background: #fff; color: #070707; border-radius: 12px;
+               padding: 0 18px 10px; margin-left: -6px; text-shadow: none; line-height: 100px; }
+
+  #lead { left: 113px; top: 660px; width: 1000px; white-space: normal; font-size: 26px; line-height: 38px; color: #ededed; letter-spacing: -.3px; }
+  #lead b { font-weight: 700; color: #fff; }
+
+  /* pillars */
+  .row { position: absolute; left: 223px; width: 910px; height: 170px; border: 2.5px solid #fff; border-radius: 18px;
+         box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.4); }
+  .row .num { position: absolute; left: -148px; top: 54px; width: 60px; height: 58px; border: 2px solid #fff; border-radius: 3px; background: #070707;
+              display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #fff; }
+  .row .icon { position: absolute; left: 36px; top: 50%; transform: translateY(-50%); }
+  .row .div { position: absolute; left: 132px; top: 46px; bottom: 46px; width: 2px; background: #fff; }
+  .row .verb { position: absolute; left: 164px; top: 30px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 46px; letter-spacing: -1.4px; line-height: 1; color: #fff; }
+  .row .mod { position: absolute; left: 166px; top: 88px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 2.5px; color: #fff; opacity: .92; }
+  .row .desc { position: absolute; left: 166px; top: 118px; font-family: 'Sora', sans-serif; font-size: 20px; color: #cfcfcf; letter-spacing: -.2px; white-space: nowrap; }
+  .row .dots { position: absolute; right: 26px; top: 24px; }
+
+  #tagline { left: 112px; top: 1432px; font-size: 44px; letter-spacing: -1.4px; line-height: 48px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="420" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="930" y1="400" x2="1254" y2="400" stroke-width="1.1" stroke-opacity=".45"/>
+      <path d="M 780 185 A 420 420 0 0 0 1254 262" stroke-width="1.8"/>
+      <path d="M 686 0 Q 725 105 780 185" stroke-width="2" stroke-dasharray="9 9"/>
+      <!-- timeline connecting the three steps -->
+      <line x1="105" y1="785" x2="105" y2="1330" stroke-width="2" stroke-dasharray="9 9"/>
+      <line x1="135" y1="885" x2="223" y2="885" stroke-width="1.5" stroke-opacity=".8"/>
+      <line x1="135" y1="1081" x2="223" y2="1081" stroke-width="1.5" stroke-opacity=".8"/>
+      <line x1="135" y1="1277" x2="223" y2="1277" stroke-width="1.5" stroke-opacity=".8"/>
+      <!-- footer -->
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="105" cy="785" r="8" fill="#fff"/>
+    <circle cx="848" cy="1400" r="8.5" fill="#fff"/>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">LGPD NA PRÁTICA</div>
+  <div id="labelRule"></div>
+
+  <div class="abs serif glow" id="title">Privacidade não é<br>um projeto. É uma<br><span class="hl">operação contínua.</span></div>
+
+  <div class="abs sans" id="lead">A <b>Privacy Consent</b> reúne em uma única plataforma as três frentes que mantêm sua empresa em conformidade todos os dias, e não só na auditoria.</div>
+
+  <div class="row" style="top:800px">
+    <div class="num">01</div>
+    <svg class="icon" width="68" height="68" viewBox="0 0 68 68" fill="none" stroke="#fff" stroke-width="2.6">
+      <circle cx="34" cy="34" r="31"/><circle cx="34" cy="34" r="22"/><circle cx="34" cy="34" r="13"/><circle cx="34" cy="34" r="5.5"/>
+    </svg>
+    <div class="div"></div>
+    <div class="verb">Descobrir</div>
+    <div class="mod">DISCOVERY + WEB FILTER</div>
+    <div class="desc">Enxergue onde estão os dados pessoais e por onde eles circulam.</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+
+  <div class="row" style="top:996px">
+    <div class="num">02</div>
+    <svg class="icon" width="60" height="68" viewBox="0 0 52 60" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round">
+      <path d="M26 3 L48 11 V28 C48 42 38 52 26 57 C14 52 4 42 4 28 V11 Z"/>
+    </svg>
+    <div class="div"></div>
+    <div class="verb">Governar</div>
+    <div class="mod">PRIVACIDADE &amp; GOVERNANÇA</div>
+    <div class="desc">Organize processos, registros e responsabilidades com a LGPD.</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+
+  <div class="row" style="top:1192px">
+    <div class="num">03</div>
+    <svg class="icon" width="70" height="72" viewBox="0 0 70 72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M40 60 H8 a4 4 0 0 1 -4 -4 V8 a4 4 0 0 1 4 -4 H38 L50 16 V32"/>
+      <path d="M38 4 V16 H50"/>
+      <path d="M14 20 H36 M14 29 H40 M14 38 H32 M14 47 H28"/>
+      <path d="M53 38 L67 43 V53 C67 61 61 66 53 69 C45 66 39 61 39 53 V43 Z" fill="#070707"/>
+      <path d="M47 53 L52 58 L60 48"/>
+    </svg>
+    <div class="div"></div>
+    <div class="verb">Proteger</div>
+    <div class="mod">PROTEÇÃO DE DADOS — DLP</div>
+    <div class="desc">Evite que informações sensíveis saiam de onde não deveriam.</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+
+  <div class="abs serif glow" id="tagline">Visibilidade que antecipa,<br>proteção que acompanha.</div>
+  <div class="abs sans" id="site"><small>SAIBA MAIS</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  document.querySelectorAll('[data-dots]').forEach(s => {
+    const g = document.createElementNS(NS, 'g'); g.setAttribute('fill', '#fff'); s.appendChild(g);
+    dots(g, 4, 4, 3, 3, 21, 17.5, 2.4);
+  });
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 4321;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => true);
+</script>
+</body>
+</html>
