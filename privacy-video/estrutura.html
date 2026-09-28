@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — O que é a Privacy Consent?</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1254px; height: 1254px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 45% 40%, #111 0%, #070707 70%); }
+  svg#deco { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 14px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 221px; font-size: 20px; letter-spacing: 6.5px; font-weight: 400; line-height: 24px; }
+  #labelRule { position: absolute; left: 333px; top: 233px; width: 108px; height: 1.5px; background: #fff; }
+  #title { left: 110px; top: 250px; font-size: 55.5px; letter-spacing: -1.9px; line-height: 1.1; }
+  #lead { left: 113px; top: 323px; width: 900px; white-space: normal; font-size: 23.5px; line-height: 30.5px; font-weight: 400; letter-spacing: -.45px; color: #f2f2f2; }
+
+  .card { position: absolute; border: 2.5px solid #fff; border-radius: 18px;
+          box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.35); }
+  .card .num { position: absolute; left: 22px; top: 21px; width: 57px; height: 55px; border: 2px solid #fff; border-radius: 3px;
+               display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px; color: #fff; }
+  .card .dots { position: absolute; right: 26px; top: 22px; width: 50px; height: 42px; }
+  .card .body { position: absolute; left: 0; right: 0; display: flex; align-items: center; }
+  .card .icon { display: block; flex: none; }
+  .card .div { width: 2px; background: #fff; flex: none; }
+  .card .txt { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 25px; line-height: 31px; letter-spacing: .8px; color: #fff; white-space: nowrap; }
+
+  #tagline { left: 674px; top: 815px; font-size: 49px; letter-spacing: -1.6px; line-height: 50px; }
+  #cta { left: 455px; top: 1140px; font-size: 42px; letter-spacing: -0.9px; line-height: 1.1; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1254" viewBox="0 0 1254 1254">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <!-- grid -->
+      <line x1="60" y1="0" x2="60" y2="1254" stroke-width="1.2" stroke-opacity=".55"/>
+      <line x1="785" y1="0" x2="785" y2="190" stroke-width="1.2" stroke-opacity=".55"/>
+      <line x1="1035" y1="0" x2="1035" y2="500" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="510" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="975" y1="400" x2="1254" y2="400" stroke-width="1.1" stroke-opacity=".45"/>
+      <line x1="0" y1="1101" x2="1190" y2="1101" stroke-width="1.5" stroke-opacity=".85"/>
+      <line x1="249" y1="1101" x2="249" y2="1254" stroke-width="1.2" stroke-opacity=".55"/>
+      <!-- top-right circles -->
+      <path d="M 780 185 A 420 420 0 0 0 1254 262" stroke-width="1.8"/>
+      <path d="M 686 0 Q 725 105 780 185" stroke-width="2" stroke-dasharray="9 9"/>
+      <!-- bottom-left circles -->
+      <circle cx="0" cy="1205" r="152" stroke-width="1.8"/>
+      <circle cx="-40" cy="1370" r="400" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <g id="dotsBL" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="238" cy="1101" r="8.5" fill="#fff"/>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">VISÃO GERAL</div>
+  <div id="labelRule"></div>
+  <div class="abs serif glow" id="title">O que é a Privacy Consent?</div>
+  <div class="abs sans" id="lead">Uma plataforma modular estruturada em três grandes áreas: Privacidade &amp; Governança, Discovery + Web Filter e Proteção de Dados — DLP. Cada uma conta com seus próprios submódulos para melhorar a gestão da privacidade e a conformidade de dados da sua empresa.</div>
+
+  <!-- 01 -->
+  <div class="card" style="left:223px;top:466px;width:370px;height:305px">
+    <div class="num">01</div>
+    <svg class="dots" data-dots></svg>
+    <div class="body" style="top:138px;padding-left:28px;gap:0">
+      <svg class="icon" width="52" height="60" viewBox="0 0 52 60" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round">
+        <path d="M26 3 L48 11 V28 C48 42 38 52 26 57 C14 52 4 42 4 28 V11 Z"/>
+      </svg>
+      <div class="div" style="height:72px;margin:0 20px 0 26px"></div>
+      <div class="txt">PRIVACIDADE &amp;<br>GOVERNANÇA</div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="card" style="left:661px;top:466px;width:361px;height:305px">
+    <div class="num">03</div>
+    <svg class="dots" data-dots></svg>
+    <div class="body" style="top:138px;padding-left:26px">
+      <svg class="icon" width="70" height="72" viewBox="0 0 70 72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M40 60 H8 a4 4 0 0 1 -4 -4 V8 a4 4 0 0 1 4 -4 H38 L50 16 V32"/>
+        <path d="M38 4 V16 H50"/>
+        <path d="M14 20 H36 M14 29 H40 M14 38 H32 M14 47 H28"/>
+        <path d="M53 38 L67 43 V53 C67 61 61 66 53 69 C45 66 39 61 39 53 V43 Z" fill="#070707"/>
+        <path d="M47 53 L52 58 L60 48"/>
+      </svg>
+      <div class="div" style="height:72px;margin:0 22px 0 28px"></div>
+      <div class="txt">PROTEÇÃO DE<br>DADOS — DLP</div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="card" style="left:223px;top:795px;width:370px;height:274px">
+    <div class="num">02</div>
+    <svg class="dots" data-dots></svg>
+    <div class="body" style="top:136px;padding-left:31px">
+      <svg class="icon" width="68" height="68" viewBox="0 0 68 68" fill="none" stroke="#fff" stroke-width="2.6">
+        <circle cx="34" cy="34" r="31"/><circle cx="34" cy="34" r="22"/><circle cx="34" cy="34" r="13"/><circle cx="34" cy="34" r="5.5"/>
+      </svg>
+      <div class="div" style="height:72px;margin:0 18px 0 24px"></div>
+      <div class="txt">DISCOVERY +<br>WEB FILTER</div>
+    </div>
+  </div>
+
+  <div class="abs serif glow" id="tagline">Visibilidade que<br>antecipa, proteção<br>que acompanha.</div>
+  <div class="abs serif glow" id="cta">Como a Privacy Consent é estruturada?</div>
+
+  <canvas id="grain" width="627" height="627" style="width:1254px;height:1254px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  dots(document.getElementById('dotsBL'), 292, 1142, 5, 3, 28, 27, 3.2);
+  document.querySelectorAll('[data-dots]').forEach(s => {
+    const g = document.createElementNS(NS, 'g'); g.setAttribute('fill', '#fff'); s.appendChild(g);
+    dots(g, 4, 4, 3, 3, 21, 17.5, 2.4);
+  });
+  // seeded film grain
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 627); let seed = 1234;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => true);
+</script>
+</body>
+</html>
