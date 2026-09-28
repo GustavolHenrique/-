@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — Mitos da LGPD</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 40% 30%, #131313 0%, #070707 70%); }
+  svg#deco { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; left: 400px; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+
+  #title { left: 108px; top: 300px; font-size: 100px; letter-spacing: -3.4px; line-height: 104px; }
+  #title .hl { display: inline-block; background: #fff; color: #070707; border-radius: 12px;
+               padding: 0 18px 10px; margin-left: -6px; text-shadow: none; line-height: 98px; }
+
+  .card { position: absolute; left: 112px; width: 1030px; height: 178px; border: 2.5px solid #fff; border-radius: 18px;
+          box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
+  .card .tag { position: absolute; display: flex; align-items: center; gap: 10px;
+               font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3.5px; color: #fff; }
+  .card .tag svg { flex: none; }
+  .card .myth-tag { left: 30px; top: 26px; opacity: .6; }
+  .card .true-tag { left: 470px; top: 26px; }
+  .card .myth { position: absolute; left: 30px; top: 62px; width: 375px; white-space: normal;
+                font-family: 'Playfair Display', serif; font-weight: 800; font-size: 29px; line-height: 36px; letter-spacing: -.6px;
+                color: rgba(255,255,255,.62); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: rgba(255,255,255,.55); }
+  .card .div { position: absolute; left: 434px; top: 26px; bottom: 26px; width: 2px; background: #fff; }
+  .card .truth { position: absolute; left: 470px; top: 60px; width: 530px; white-space: normal;
+                 font-family: 'Sora', sans-serif; font-size: 20.5px; line-height: 29px; color: #fff; letter-spacing: -.25px; }
+  .card .truth b { font-weight: 700; }
+  .card .n { position: absolute; right: 26px; top: 20px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 22px;
+             font-variant-numeric: lining-nums; color: #fff; opacity: .45; }
+
+  #closing { left: 112px; top: 1424px; font-size: 46px; letter-spacing: -1.5px; line-height: 50px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="420" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="930" y1="400" x2="1254" y2="400" stroke-width="1.1" stroke-opacity=".45"/>
+      <path d="M 780 185 A 420 420 0 0 0 1254 262" stroke-width="1.8"/>
+      <path d="M 686 0 Q 725 105 780 185" stroke-width="2" stroke-dasharray="9 9"/>
+      <line x1="1198" y1="560" x2="1198" y2="1400" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="60" cy="1400" r="8.5" fill="#fff"/>
+    <circle cx="1198" cy="1400" r="8" fill="#fff"/>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">MITO × VERDADE</div>
+  <div id="labelRule"></div>
+
+  <div class="abs serif glow" id="title">LGPD: 4 mitos que<br><span class="hl">ainda custam caro.</span></div>
+
+  <template id="icons">
+    <svg data-x width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="10" r="8.6"/><path d="M6.8 6.8 L13.2 13.2 M13.2 6.8 L6.8 13.2"/></svg>
+    <svg data-ok width="20" height="20" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.4 L8.7 13.2 L14.4 7.2" fill="none" stroke="#070707" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </template>
+
+  <div id="cards"></div>
+
+  <div class="abs serif glow" id="closing">Menos mito,<br>mais conformidade.</div>
+  <div class="abs sans" id="site"><small>CONHEÇA A PRIVACY CONSENT</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const items = [
+    ['A LGPD é só para grandes empresas.',
+     'Vale para <b>qualquer organização</b> que trate dados pessoais. Pequenos negócios têm regras simplificadas, mas não ficam de fora.'],
+    ['Ter política de privacidade no site basta.',
+     'Conformidade exige <b>processos contínuos</b>: registro das operações de tratamento, bases legais definidas e medidas de segurança.'],
+    ['Sem consentimento, não posso tratar dados.',
+     'O consentimento é <b>só uma das 10 bases legais</b> previstas no art. 7º da LGPD. Cada tratamento precisa da base adequada.'],
+    ['Nunca vazou nada, então estamos seguros.',
+     'Sem saber <b>onde os dados estão e por onde circulam</b>, um incidente pode acontecer sem que ninguém perceba.'],
+  ];
+  const tpl = document.getElementById('icons').content;
+  const icon = k => tpl.querySelector(`[data-${k}]`).outerHTML;
+  document.getElementById('cards').innerHTML = items.map(([m, t], i) => `
+    <div class="card" style="top:${566 + i * 206}px">
+      <div class="tag myth-tag">${icon('x')}MITO</div>
+      <div class="myth">${m}</div>
+      <div class="div"></div>
+      <div class="tag true-tag">${icon('ok')}VERDADE</div>
+      <div class="truth">${t}</div>
+      <div class="n">0${i + 1}</div>
+    </div>`).join('');
+
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 2468;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => true);
+</script>
+</body>
+</html>
