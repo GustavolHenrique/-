@@ -29,17 +29,23 @@
 
   .card { position: absolute; left: 112px; width: 1030px; height: 178px; border: 2.5px solid #fff; border-radius: 18px;
           box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
-  .card .tag { position: absolute; display: flex; align-items: center; gap: 10px;
-               font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3.5px; color: #fff; }
+  .card .tag { position: absolute; display: flex; align-items: center; gap: 12px;
+               font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 4px; color: #fff; }
   .card .tag svg { flex: none; }
-  .card .myth-tag { left: 30px; top: 26px; }
-  .card .true-tag { left: 470px; top: 26px; }
-  .card .myth { position: absolute; left: 30px; top: 62px; width: 375px; white-space: normal;
-                font-family: 'Playfair Display', serif; font-weight: 800; font-size: 29px; line-height: 36px; letter-spacing: -.6px;
-                color: #fff; }
-  .card .div { position: absolute; left: 434px; top: 26px; bottom: 26px; width: 2px; background: #fff; }
-  .card .truth { position: absolute; left: 470px; top: 60px; width: 530px; white-space: normal;
-                 font-family: 'Sora', sans-serif; font-size: 20.5px; line-height: 29px; color: #fff; letter-spacing: -.25px; }
+  /* MITO: fragile — dashed panel with diagonal hatch */
+  .card .myth-panel { position: absolute; left: 12px; top: 12px; bottom: 12px; width: 420px; border-radius: 11px;
+                      border: 2px dashed rgba(255,255,255,.75);
+                      background: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 2px, transparent 2px 11px); }
+  .card .myth-tag { left: 34px; top: 30px; }
+  .card .myth { position: absolute; left: 34px; top: 74px; width: 360px; white-space: normal;
+                font-family: 'Playfair Display', serif; font-weight: 800; font-size: 28px; line-height: 34px; letter-spacing: -.6px; color: #fff; }
+  /* arrow: myth -> truth */
+  .card .arrow { position: absolute; left: 442px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%;
+                 border: 2px solid #fff; background: #070707; display: flex; align-items: center; justify-content: center; }
+  /* VERDADE: solid — sits on the card's own solid border */
+  .card .true-tag { left: 510px; top: 30px; }
+  .card .truth { position: absolute; left: 510px; top: 72px; width: 490px; white-space: normal;
+                 font-family: 'Sora', sans-serif; font-size: 20px; line-height: 28px; color: #fff; letter-spacing: -.3px; }
   .card .truth b { font-weight: 700; }
   .card .n { position: absolute; right: 26px; top: 20px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 22px;
              font-variant-numeric: lining-nums; color: #fff; opacity: .45; }
@@ -81,8 +87,9 @@
   <div class="abs serif glow" id="title">LGPD: 4 mitos que<br>ainda custam caro.</div>
 
   <template id="icons">
-    <svg data-x width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="10" cy="10" r="8.6"/><path d="M6.8 6.8 L13.2 13.2 M13.2 6.8 L6.8 13.2"/></svg>
-    <svg data-ok width="20" height="20" viewBox="0 0 20 20" fill="#fff"><circle cx="10" cy="10" r="10"/><path d="M5.8 10.4 L8.7 13.2 L14.4 7.2" fill="none" stroke="#070707" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg data-x width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="4 3.2"><circle cx="14" cy="14" r="12.5"/><path d="M9.2 9.2 L18.8 18.8 M18.8 9.2 L9.2 18.8" stroke-dasharray="none" stroke-width="2.8"/></svg>
+    <svg data-ok width="28" height="28" viewBox="0 0 28 28" fill="#fff"><circle cx="14" cy="14" r="14"/><path d="M8 14.6 L12.2 18.6 L20.2 9.8" fill="none" stroke="#070707" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg data-arrow width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 H16 M11 5 L16 10 L11 15"/></svg>
   </template>
 
   <div id="cards"></div>
@@ -108,9 +115,10 @@
   const icon = k => tpl.querySelector(`[data-${k}]`).outerHTML;
   document.getElementById('cards').innerHTML = items.map(([m, t], i) => `
     <div class="card" style="top:${566 + i * 206}px">
+      <div class="myth-panel"></div>
       <div class="tag myth-tag">${icon('x')}MITO</div>
       <div class="myth">“${m}”</div>
-      <div class="div"></div>
+      <div class="arrow">${icon('arrow')}</div>
       <div class="tag true-tag">${icon('ok')}VERDADE</div>
       <div class="truth">${t}</div>
       <div class="n">0${i + 1}</div>
