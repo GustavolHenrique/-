@@ -29,26 +29,36 @@
   #lead { left: 113px; top: 448px; width: 960px; white-space: normal; font-size: 25px; line-height: 37px; color: #ececec; letter-spacing: -.3px; }
 
   /* hero: the deadline */
-  #hero { position: absolute; left: 112px; top: 560px; width: 1030px; height: 330px; border: 2.5px solid #fff; border-radius: 18px;
+  #hero { position: absolute; left: 112px; top: 556px; width: 1030px; height: 236px; border: 2.5px solid #fff; border-radius: 18px;
           box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
-  #hero .big { position: absolute; left: 44px; top: -22px; font-size: 360px; line-height: 1; letter-spacing: -10px; }
-  #hero .vdiv { position: absolute; left: 300px; top: 48px; bottom: 48px; width: 2px; background: #fff; }
-  #hero .tag { position: absolute; left: 342px; top: 58px; display: flex; align-items: center; gap: 12px;
+  #hero .big { position: absolute; left: 56px; top: -18px; font-size: 262px; line-height: 1; letter-spacing: -10px; }
+  #hero .vdiv { position: absolute; left: 248px; top: 36px; bottom: 36px; width: 2px; background: #fff; }
+  #hero .tag { position: absolute; left: 288px; top: 40px; display: flex; align-items: center; gap: 12px;
                font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 4px; color: #fff; }
-  #hero .unit { position: absolute; left: 340px; top: 98px; font-size: 76px; letter-spacing: -2.4px; line-height: 1; }
-  #hero .what { position: absolute; left: 342px; top: 196px; width: 640px; white-space: normal; font-size: 25px; line-height: 35px; color: #fff; letter-spacing: -.3px; }
+  #hero .unit { position: absolute; left: 286px; top: 76px; font-size: 64px; letter-spacing: -2.4px; line-height: 1; }
+  #hero .what { position: absolute; left: 288px; top: 156px; width: 700px; white-space: normal; font-size: 23px; line-height: 32px; color: #fff; letter-spacing: -.3px; }
   #hero .what b { font-weight: 700; }
   #hero .dots { position: absolute; right: 26px; top: 24px; }
 
   /* timeline */
-  #steps { position: absolute; left: 112px; top: 975px; width: 1030px; height: 360px; }
+  #steps { position: absolute; left: 112px; top: 832px; width: 1030px; height: 500px; }
+  /* how Privacy Consent helps, one box per step */
+  #helpHead { position: absolute; left: 112px; top: 1094px; display: flex; align-items: center; gap: 14px;
+              font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 4px; color: #fff; }
+  #helpHead .mini { width: 52px; height: 18px; background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: space-evenly; padding: 0 4px; }
+  #helpHead .mini span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: #000; line-height: 1; height: 12px; letter-spacing: 0; }
+  #helpRule { position: absolute; left: 632px; top: 1104px; width: 510px; height: 1.5px; background: #fff; opacity: .8; }
+  .help { position: absolute; top: 1136px; width: 238px; height: 186px; border: 2px solid #fff; border-radius: 14px; padding: 20px 18px;
+          box-shadow: 0 0 14px rgba(255,255,255,.1); background: rgba(0,0,0,.45); }
+  .help .mod { display: flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 2px; color: #fff; }
+  .help .txt { margin-top: 14px; font-family: 'Sora', sans-serif; font-size: 18.5px; line-height: 26px; color: #fff; letter-spacing: -.3px; white-space: normal; }
   .step { position: absolute; top: 0; width: 236px; }
   .step .num { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3.5px; color: #fff; opacity: .7; }
-  .step .name { margin-top: 70px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 42px; letter-spacing: -1.3px; line-height: 1; color: #fff; }
-  .step .desc { margin-top: 14px; font-family: 'Sora', sans-serif; font-size: 21px; line-height: 30px; color: #d6d6d6; letter-spacing: -.25px; white-space: normal; }
+  .step .name { margin-top: 66px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 42px; letter-spacing: -1.3px; line-height: 1; color: #fff; }
+  .step .desc { margin-top: 12px; font-family: 'Sora', sans-serif; font-size: 19.5px; line-height: 27px; color: #d6d6d6; letter-spacing: -.25px; white-space: normal; }
   .step .desc b { color: #fff; font-weight: 700; }
 
-  #note { left: 112px; top: 1342px; font-size: 15px; letter-spacing: .1px; color: rgba(255,255,255,.62); }
+  #note { left: 112px; top: 1350px; font-size: 15px; letter-spacing: .1px; color: rgba(255,255,255,.62); }
 
   #closing { left: 112px; top: 1424px; font-size: 46px; letter-spacing: -1.5px; line-height: 50px; }
   #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
@@ -67,7 +77,7 @@
       <circle cx="1110" cy="-120" r="420" stroke-width="1.8"/>
       <circle cx="1110" cy="-120" r="375" stroke-width="2" stroke-dasharray="9 9"/>
       <!-- timeline rail -->
-      <line x1="112" y1="1025" x2="1142" y2="1025" stroke-width="2" stroke-dasharray="9 9"/>
+      <line x1="112" y1="872" x2="1142" y2="872" stroke-width="2" stroke-dasharray="9 9"/>
       <!-- footer -->
       <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
       <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
@@ -102,6 +112,9 @@
   </div>
 
   <div id="steps"></div>
+  <div id="helpHead"><span class="mini"><span>*</span><span>*</span><span>*</span></span>COMO A PRIVACY CONSENT AJUDA</div>
+  <div id="helpRule"></div>
+  <div id="helps"></div>
 
   <div class="abs sans" id="note">*Regulamento de Comunicação de Incidente de Segurança — Resolução CD/ANPD nº 15/2024.</div>
 
@@ -113,12 +126,22 @@
 <script>
   const NS = 'http://www.w3.org/2000/svg';
   const steps = [
-    ['Conter', 'Isole a falha e interrompa a exposição dos dados <b>o quanto antes</b>.'],
-    ['Avaliar', 'Entenda quais dados e quantos titulares foram afetados, e <b>qual o risco</b>.'],
-    ['Comunicar', 'Notifique a ANPD e os titulares <b>em até 3 dias úteis</b>.'],
-    ['Registrar', 'Documente o incidente e guarde o registro <b>por no mínimo 5 anos</b>.'],
+    ['Conter', 'Isole a falha e interrompa a exposição <b>o quanto antes</b>.',
+     'PROTEÇÃO DE DADOS — DLP', 'Ajuda a barrar a saída de dados sensíveis antes que o problema cresça.'],
+    ['Avaliar', 'Entenda quais dados e titulares foram afetados, e <b>qual o risco</b>.',
+     'DISCOVERY + WEB FILTER', 'Mostra onde estão os dados pessoais, para saber o que foi exposto.'],
+    ['Comunicar', 'Notifique a ANPD e os titulares <b>em até 3 dias úteis</b>.',
+     'PRIVACIDADE & GOVERNANÇA', 'Informações centralizadas para notificar com agilidade e precisão.'],
+    ['Registrar', 'Documente o incidente e guarde o registro <b>por 5 anos</b>.',
+     'PRIVACIDADE & GOVERNANÇA', 'Histórico documentado e organizado, pronto para auditoria.'],
   ];
+  const ok = '<svg width="16" height="16" viewBox="0 0 28 28" style="flex:none"><circle cx="14" cy="14" r="14" fill="#2FD27A"/><path d="M8 14.6 L12.2 18.6 L20.2 9.8" fill="none" stroke="#070707" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const COL = 264;
+  document.getElementById('helps').innerHTML = steps.map(([, , m, t], i) => `
+    <div class="help" style="left:${112 + i * COL}px">
+      <div class="mod">${ok}${m}</div>
+      <div class="txt">${t}</div>
+    </div>`).join('');
   document.getElementById('steps').innerHTML = steps.map(([n, d], i) => `
     <div class="step" style="left:${i * COL}px">
       <div class="num">0${i + 1}</div>
@@ -130,8 +153,8 @@
   steps.forEach((_, i) => {
     const x = 112 + i * COL + 8;
     nodes.insertAdjacentHTML('beforeend', i === 2
-      ? `<circle cx="${x}" cy="1025" r="17" fill="none" stroke="#FF4D4F" stroke-width="2.4"/><circle cx="${x}" cy="1025" r="9" fill="#fff"/>`
-      : `<circle cx="${x}" cy="1025" r="9" fill="#fff"/>`);
+      ? `<circle cx="${x}" cy="872" r="17" fill="none" stroke="#FF4D4F" stroke-width="2.4"/><circle cx="${x}" cy="872" r="9" fill="#fff"/>`
+      : `<circle cx="${x}" cy="872" r="9" fill="#fff"/>`);
   });
 
   function dots(g, x0, y0, cols, rows, dx, dy, r) {
