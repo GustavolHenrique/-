@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — Incidente de dados</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 40% 40%, #131313 0%, #070707 70%); }
+  svg#deco { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; left: 522px; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+
+  #title { left: 108px; top: 298px; font-size: 118px; letter-spacing: -4px; line-height: 1.05; }
+  #lead { left: 113px; top: 448px; width: 960px; white-space: normal; font-size: 25px; line-height: 37px; color: #ececec; letter-spacing: -.3px; }
+
+  /* hero: the deadline */
+  #hero { position: absolute; left: 112px; top: 560px; width: 1030px; height: 330px; border: 2.5px solid #fff; border-radius: 18px;
+          box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
+  #hero .big { position: absolute; left: 44px; top: -22px; font-size: 360px; line-height: 1; letter-spacing: -10px; }
+  #hero .vdiv { position: absolute; left: 300px; top: 48px; bottom: 48px; width: 2px; background: #fff; }
+  #hero .tag { position: absolute; left: 342px; top: 58px; display: flex; align-items: center; gap: 12px;
+               font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 4px; color: #fff; }
+  #hero .unit { position: absolute; left: 340px; top: 98px; font-size: 76px; letter-spacing: -2.4px; line-height: 1; }
+  #hero .what { position: absolute; left: 342px; top: 196px; width: 640px; white-space: normal; font-size: 25px; line-height: 35px; color: #fff; letter-spacing: -.3px; }
+  #hero .what b { font-weight: 700; }
+  #hero .dots { position: absolute; right: 26px; top: 24px; }
+
+  /* timeline */
+  #steps { position: absolute; left: 112px; top: 975px; width: 1030px; height: 360px; }
+  .step { position: absolute; top: 0; width: 236px; }
+  .step .num { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3.5px; color: #fff; opacity: .7; }
+  .step .name { margin-top: 70px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 42px; letter-spacing: -1.3px; line-height: 1; color: #fff; }
+  .step .desc { margin-top: 14px; font-family: 'Sora', sans-serif; font-size: 21px; line-height: 30px; color: #d6d6d6; letter-spacing: -.25px; white-space: normal; }
+  .step .desc b { color: #fff; font-weight: 700; }
+
+  #note { left: 112px; top: 1342px; font-size: 15px; letter-spacing: .1px; color: rgba(255,255,255,.62); }
+
+  #closing { left: 112px; top: 1424px; font-size: 46px; letter-spacing: -1.5px; line-height: 50px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="420" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="930" y1="400" x2="1254" y2="400" stroke-width="1.1" stroke-opacity=".45"/>
+      <circle cx="1110" cy="-120" r="420" stroke-width="1.8"/>
+      <circle cx="1110" cy="-120" r="375" stroke-width="2" stroke-dasharray="9 9"/>
+      <!-- timeline rail -->
+      <line x1="112" y1="1025" x2="1142" y2="1025" stroke-width="2" stroke-dasharray="9 9"/>
+      <!-- footer -->
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="60" cy="1400" r="8.5" fill="#fff"/>
+    <g id="nodes"></g>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">GESTÃO DE INCIDENTES</div>
+  <div id="labelRule"></div>
+
+  <div class="abs serif glow" id="title">Vazou. E agora?</div>
+  <div class="abs sans" id="lead">Quando um incidente de segurança pode gerar risco ou dano relevante aos titulares, a LGPD exige resposta rápida e organizada.</div>
+
+  <div id="hero">
+    <div class="abs serif glow big">3</div>
+    <div class="vdiv"></div>
+    <div class="tag sans">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="#FF4D4F" stroke-width="2.4" stroke-linecap="round"><circle cx="13" cy="14" r="10.5"/><path d="M13 8.5 V14 L16.5 16.5"/><path d="M10 2 H16"/></svg>
+      PRAZO
+    </div>
+    <div class="abs serif glow unit">dias úteis</div>
+    <div class="abs sans what">para comunicar o incidente <b>à ANPD e aos titulares afetados</b>.*</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+
+  <div id="steps"></div>
+
+  <div class="abs sans" id="note">*Regulamento de Comunicação de Incidente de Segurança — Resolução CD/ANPD nº 15/2024.</div>
+
+  <div class="abs serif glow" id="closing">Quem enxerga antes,<br>reage melhor.</div>
+  <div class="abs sans" id="site"><small>CONHEÇA A PRIVACY CONSENT</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const steps = [
+    ['Conter', 'Isole a falha e interrompa a exposição dos dados <b>o quanto antes</b>.'],
+    ['Avaliar', 'Entenda quais dados e quantos titulares foram afetados, e <b>qual o risco</b>.'],
+    ['Comunicar', 'Notifique a ANPD e os titulares <b>em até 3 dias úteis</b>.'],
+    ['Registrar', 'Documente o incidente e guarde o registro <b>por no mínimo 5 anos</b>.'],
+  ];
+  const COL = 264;
+  document.getElementById('steps').innerHTML = steps.map(([n, d], i) => `
+    <div class="step" style="left:${i * COL}px">
+      <div class="num">0${i + 1}</div>
+      <div class="name">${n}</div>
+      <div class="desc">${d}</div>
+    </div>`).join('');
+  // nodes on the rail; "Comunicar" (the deadline step) gets the red ring
+  const nodes = document.getElementById('nodes');
+  steps.forEach((_, i) => {
+    const x = 112 + i * COL + 8;
+    nodes.insertAdjacentHTML('beforeend', i === 2
+      ? `<circle cx="${x}" cy="1025" r="17" fill="none" stroke="#FF4D4F" stroke-width="2.4"/><circle cx="${x}" cy="1025" r="9" fill="#fff"/>`
+      : `<circle cx="${x}" cy="1025" r="9" fill="#fff"/>`);
+  });
+
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  document.querySelectorAll('[data-dots]').forEach(s => {
+    const g = document.createElementNS(NS, 'g'); g.setAttribute('fill', '#fff'); s.appendChild(g);
+    dots(g, 4, 4, 3, 3, 21, 17.5, 2.4);
+  });
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 1357;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => true);
+</script>
+</body>
+</html>
