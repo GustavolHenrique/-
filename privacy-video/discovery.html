@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — Data Discovery & DSPM</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 70% 50%, #141414 0%, #070707 65%); }
+  svg#deco, svg#radar { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+
+  #title { left: 108px; top: 298px; font-size: 100px; letter-spacing: -3.4px; line-height: 104px; }
+
+  #lead { left: 113px; top: 636px; width: 470px; white-space: normal; font-size: 25px; line-height: 37px; color: #ececec; letter-spacing: -.3px; }
+  #lead b { color: #fff; font-weight: 700; }
+  #legend { left: 113px; top: 836px; display: flex; gap: 28px; font-size: 17px; font-weight: 600; letter-spacing: 2.5px; }
+  #legend span { display: flex; align-items: center; gap: 10px; }
+  #legend i { width: 13px; height: 13px; border-radius: 50%; display: inline-block; }
+
+  /* radar chips */
+  .chip { position: absolute; transform: translate(-50%, -50%); padding: 7px 13px; border: 1.5px solid #fff; border-radius: 999px; background: #070707;
+          font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2.2px; color: #fff; white-space: nowrap; }
+  #scan { position: absolute; border-radius: 50%;
+          background: conic-gradient(from 290deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,.16) 70deg, rgba(255,255,255,0) 70.5deg); }
+
+  /* two concept cards */
+  .card { position: absolute; top: 1050px; width: 490px; height: 286px; border: 2.5px solid #fff; border-radius: 18px; padding: 30px 32px;
+          box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.45); }
+  .card .top { display: flex; align-items: center; gap: 14px; }
+  .card .num { width: 52px; height: 48px; border: 2px solid #fff; border-radius: 3px; display: flex; align-items: center; justify-content: center;
+               font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; color: #fff; flex: none; }
+  .card .kicker { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 3.5px; color: #fff; line-height: 1.25; }
+  .card .kicker small { display: block; font-weight: 400; font-size: 13px; letter-spacing: 1.2px; opacity: .7; margin-top: 3px; }
+  .card .q { margin-top: 24px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 42px; letter-spacing: -1.3px; line-height: 1; color: #fff; }
+  .card .d { margin-top: 14px; font-family: 'Sora', sans-serif; font-size: 20px; line-height: 29px; color: #e2e2e2; letter-spacing: -.3px; }
+  .card .d b { color: #fff; font-weight: 700; }
+  .card .dots { position: absolute; right: 24px; top: 24px; }
+  #arrow { position: absolute; left: 604px; top: 1170px; width: 46px; height: 46px; border-radius: 50%; border: 2px solid #fff; background: #070707;
+           display: flex; align-items: center; justify-content: center; }
+
+  #closing { left: 112px; top: 1424px; font-size: 44px; letter-spacing: -1.4px; line-height: 48px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="250" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <circle cx="1110" cy="-120" r="420" stroke-width="1.8"/>
+      <circle cx="1110" cy="-120" r="375" stroke-width="2" stroke-dasharray="9 9"/>
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="60" cy="1400" r="8.5" fill="#fff"/>
+  </svg>
+
+  <div id="scan"></div>
+  <svg id="radar" width="1254" height="1568" viewBox="0 0 1254 1568"></svg>
+  <div id="chips"></div>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">DATA DISCOVERY &amp; DSPM</div>
+  <div id="labelRule"></div>
+
+  <div class="abs serif glow" id="title">Você não protege<br>o que não enxerga.</div>
+
+  <div class="abs sans" id="lead">Dados pessoais se espalham por servidores, nuvem, e-mails e planilhas. <b>Cada cópia esquecida é um risco</b> que ninguém está vigiando.</div>
+  <div class="abs sans" id="legend">
+    <span><i style="background:#2FD27A"></i>PROTEGIDO</span>
+    <span><i style="background:#FF4D4F"></i>EXPOSTO</span>
+  </div>
+
+  <div class="card" style="left:112px">
+    <div class="top">
+      <div class="num">01</div>
+      <div class="kicker">DATA DISCOVERY<small>Descoberta de dados</small></div>
+    </div>
+    <div class="q">Onde estão os dados?</div>
+    <div class="d">Localiza e classifica <b>dados pessoais e sensíveis</b> em todos os repositórios da empresa.</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+  <div id="arrow"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 H16 M11 5 L16 10 L11 15"/></svg></div>
+  <div class="card" style="left:652px">
+    <div class="top">
+      <div class="num">02</div>
+      <div class="kicker">DSPM<small>Data Security Posture Management</small></div>
+    </div>
+    <div class="q">Eles estão seguros?</div>
+    <div class="d">Avalia continuamente <b>acessos, permissões e configurações</b> para apontar onde há risco de exposição.</div>
+    <svg class="dots" width="50" height="42" data-dots></svg>
+  </div>
+
+  <div class="abs serif glow" id="closing">Visibilidade que antecipa,<br>proteção que acompanha.</div>
+  <div class="abs sans" id="site"><small>CONHEÇA A PRIVACY CONSENT</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const RED = '#FF4D4F', GREEN = '#2FD27A';
+
+  // label rule sits just after the label text
+  const lbl = document.getElementById('label');
+  document.getElementById('labelRule').style.left = (lbl.offsetLeft + lbl.offsetWidth + 22) + 'px';
+
+  // ---- radar ----
+  const CX = 900, CY = 772, R = 222;
+  const radar = document.getElementById('radar');
+  let svg = '<g fill="none" stroke="#fff" stroke-linecap="round">';
+  [[R, 1.8, ''], [R * .75, 1.6, '9 9'], [R * .5, 1.6, ''], [R * .25, 1.6, '9 9']].forEach(([r, w, d]) =>
+    svg += `<circle cx="${CX}" cy="${CY}" r="${r}" stroke-width="${w}" ${d ? `stroke-dasharray="${d}"` : ''} stroke-opacity="${r === R ? 1 : .7}"/>`);
+  svg += `<line x1="${CX - R - 18}" y1="${CY}" x2="${CX + R + 18}" y2="${CY}" stroke-width="1.1" stroke-opacity=".45"/>`;
+  svg += `<line x1="${CX}" y1="${CY - R - 18}" x2="${CX}" y2="${CY + R + 18}" stroke-width="1.1" stroke-opacity=".45"/>`;
+  svg += `<line x1="${CX}" y1="${CY}" x2="${CX}" y2="${CY - R}" stroke-width="2.4"/>`; // scan beam
+  svg += '</g>';
+  // unlabeled data points
+  [[40, -70], [60, -10], [85, 150], [-185, 45], [195, -30], [15, 105], [-115, -175], [150, -95], [-30, -140], [-160, 120], [110, 40]]
+    .forEach(([x, y]) => svg += `<circle cx="${CX + x}" cy="${CY + y}" r="4" fill="#fff" fill-opacity=".85"/>`);
+  // labeled sensitive data
+  const items = [
+    ['CPF', -150, -85, GREEN], ['E-MAIL', 115, -160, GREEN],
+    ['SAÚDE', 165, 85, RED], ['CARTÃO', -95, 150, RED], ['ENDEREÇO', -55, 62, GREEN],
+  ];
+  let chips = '';
+  items.forEach(([t, x, y, c]) => {
+    const px = CX + x, py = CY + y;
+    if (c === RED) svg += `<circle cx="${px}" cy="${py}" r="17" fill="none" stroke="${RED}" stroke-width="2" stroke-opacity=".55"/>`;
+    svg += `<circle cx="${px}" cy="${py}" r="8" fill="${c}"/>`;
+    chips += `<div class="chip" style="left:${px}px;top:${py + 32}px">${t}</div>`;
+  });
+  svg += `<circle cx="${CX}" cy="${CY}" r="7" fill="#fff"/>`;
+  radar.innerHTML = svg;
+  document.getElementById('chips').innerHTML = chips;
+  Object.assign(document.getElementById('scan').style, { left: CX - R + 'px', top: CY - R + 'px', width: 2 * R + 'px', height: 2 * R + 'px' });
+
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  document.querySelectorAll('[data-dots]').forEach(s => {
+    const g = document.createElementNS(NS, 'g'); g.setAttribute('fill', '#fff'); s.appendChild(g);
+    dots(g, 4, 4, 3, 3, 21, 17.5, 2.4);
+  });
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 9753;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => {
+    document.getElementById('labelRule').style.left = (lbl.offsetLeft + lbl.offsetWidth + 22) + 'px';
+    return true;
+  });
+</script>
+</body>
+</html>
