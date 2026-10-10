@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — Shadow IT</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: #070707; }
+  /* below the waterline the scene gets slightly lighter, like depth */
+  #water { position: absolute; left: 0; right: 0; top: 690px; height: 500px;
+           background: linear-gradient(180deg, rgba(255,255,255,.055) 0%, rgba(255,255,255,0) 100%); }
+  svg#deco, svg#berg { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+  #title { left: 108px; top: 298px; font-size: 90px; letter-spacing: -3px; line-height: 96px; }
+
+  #wl { left: 760px; top: 662px; font-size: 13px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,.7); }
+
+  .zone { position: absolute; left: 760px; width: 382px; }
+  .zone .h { display: flex; align-items: center; gap: 12px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3.5px; color: #fff; }
+  .zone .h i { width: 13px; height: 13px; border-radius: 50%; display: inline-block; flex: none; }
+  .zone ul { list-style: none; margin-top: 12px; }
+  .zone li { display: flex; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1.5px dashed rgba(255,255,255,.3);
+             font-family: 'Sora', sans-serif; font-size: 20.5px; color: #fff; letter-spacing: -.3px; }
+  .zone li:last-child { border-bottom: 0; }
+  .zone li b { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .zone.top li { color: #e6e6e6; padding: 5px 0; font-size: 19px; }
+
+  #help { position: absolute; left: 112px; top: 1210px; width: 1030px; height: 150px; border: 2.5px solid #fff; border-radius: 18px;
+          box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.5); }
+  #help .icon { position: absolute; left: 34px; top: 50%; transform: translateY(-50%); }
+  #help .div { position: absolute; left: 128px; top: 34px; bottom: 34px; width: 2px; background: #fff; }
+  #help .k { position: absolute; left: 160px; top: 30px; display: flex; align-items: center; gap: 12px;
+             font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3.5px; color: #fff; }
+  #help .k .mini { width: 46px; height: 16px; background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: space-evenly; padding: 0 4px; }
+  #help .k .mini span { font-weight: 700; font-size: 15px; color: #000; line-height: 1; height: 11px; letter-spacing: 0; }
+  #help .t { position: absolute; left: 160px; top: 62px; width: 840px; white-space: normal; font-family: 'Sora', sans-serif; font-size: 21px; line-height: 30px; color: #fff; letter-spacing: -.3px; }
+  #help .t b { font-weight: 700; }
+
+  #closing { left: 112px; top: 1424px; font-size: 44px; letter-spacing: -1.4px; line-height: 48px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="water"></div>
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="250" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <circle cx="1110" cy="-120" r="420" stroke-width="1.8"/>
+      <circle cx="1110" cy="-120" r="375" stroke-width="2" stroke-dasharray="9 9"/>
+      <!-- waterline = line of visibility -->
+      <line x1="0" y1="690" x2="1254" y2="690" stroke-width="1.8"/>
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="60" cy="690" r="8.5" fill="#fff"/>
+    <circle cx="60" cy="1400" r="8.5" fill="#fff"/>
+  </svg>
+
+  <svg id="berg" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" stroke-linejoin="round" stroke-linecap="round">
+      <!-- tip: visible, solid -->
+      <path d="M220 690 L280 650 L330 612 L372 572 L410 548 L452 574 L498 600 L548 636 L600 664 L650 690 Z"
+            fill="rgba(255,255,255,.08)" stroke-width="2.4"/>
+      <path d="M372 572 L398 640 L360 690 M410 548 L432 616 L398 640 M498 600 L470 650 L432 616 M548 636 L520 690" fill="none" stroke-width="1.3" stroke-opacity=".6"/>
+      <!-- body: hidden, dashed -->
+      <path d="M650 690 L712 770 L730 880 L694 1000 L612 1100 L490 1160 L356 1142 L244 1074 L162 966 L150 836 L188 742 L220 690"
+            fill="none" stroke-width="2.4" stroke-dasharray="10 9"/>
+      <path d="M300 760 L360 860 L300 980 M480 740 L560 840 L520 960 L430 1060 M360 860 L520 960" fill="none" stroke-width="1.2" stroke-opacity=".3" stroke-dasharray="6 8"/>
+    </g>
+    <!-- hidden risks -->
+    <g id="risk"></g>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">SHADOW IT &amp; WEB FILTER</div>
+  <div id="labelRule"></div>
+  <div class="abs serif glow" id="title">O que sua TI vê é só<br>a ponta do iceberg.</div>
+
+  <div class="zone top" style="top:540px">
+    <div class="h"><i style="background:#2FD27A"></i>O QUE A TI VÊ</div>
+    <ul>
+      <li><b style="background:#2FD27A"></b>Sistemas homologados</li>
+      <li><b style="background:#2FD27A"></b>E-mail corporativo</li>
+    </ul>
+  </div>
+  <div class="abs sans" id="wl">LINHA DA VISIBILIDADE</div>
+
+  <div class="zone" style="top:722px">
+    <div class="h"><i style="background:#FF4D4F"></i>O QUE FICA ESCONDIDO</div>
+    <ul>
+      <li><b style="background:#FF4D4F"></b>Drives e contas pessoais</li>
+      <li><b style="background:#FF4D4F"></b>Apps de mensagem sem controle</li>
+      <li><b style="background:#FF4D4F"></b>Ferramentas de IA não aprovadas</li>
+      <li><b style="background:#FF4D4F"></b>Sites de upload de arquivos</li>
+      <li><b style="background:#FF4D4F"></b>Extensões de navegador</li>
+      <li><b style="background:#FF4D4F"></b>Serviços em nuvem sem aval da TI</li>
+    </ul>
+  </div>
+
+  <div id="help">
+    <svg class="icon" width="66" height="66" viewBox="0 0 68 68" fill="none" stroke="#fff" stroke-width="2.6">
+      <circle cx="34" cy="34" r="31"/><circle cx="34" cy="34" r="22"/><circle cx="34" cy="34" r="13"/><circle cx="34" cy="34" r="5.5"/>
+    </svg>
+    <div class="div"></div>
+    <div class="k"><span class="mini"><span>*</span><span>*</span><span>*</span></span>COMO A PRIVACY CONSENT AJUDA · WEB FILTER</div>
+    <div class="t">Dá visibilidade sobre <b>quais sites e serviços estão sendo acessados</b> e permite definir com clareza o que é liberado e o que é bloqueado na sua empresa.</div>
+  </div>
+
+  <div class="abs serif glow" id="closing">Traga o invisível<br>para a superfície.</div>
+  <div class="abs sans" id="site"><small>CONHEÇA A PRIVACY CONSENT</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const lbl = document.getElementById('label');
+  const placeRule = () => document.getElementById('labelRule').style.left = (lbl.offsetLeft + lbl.offsetWidth + 22) + 'px';
+  placeRule();
+
+  // red risk markers scattered inside the submerged body
+  const risk = document.getElementById('risk');
+  [[300, 780], [560, 800], [430, 880], [240, 930], [620, 940], [360, 1030], [520, 1060], [450, 760]].forEach(([x, y]) =>
+    risk.insertAdjacentHTML('beforeend',
+      `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="#FF4D4F" stroke-width="2" stroke-opacity=".5"/><circle cx="${x}" cy="${y}" r="7" fill="#FF4D4F"/>`));
+  // the visible tip only holds known, green items
+  [[410, 615], [500, 650]].forEach(([x, y]) =>
+    risk.insertAdjacentHTML('beforeend', `<circle cx="${x}" cy="${y}" r="7" fill="#2FD27A"/>`));
+
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 7531;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => { placeRule(); return true; });
+</script>
+</body>
+</html>

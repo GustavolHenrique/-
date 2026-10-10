@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Privacy Consent — IA generativa</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* 4:5 canvas (1254 x 1568) -> exported at 1080 x 1350 */
+  html, body { width: 1254px; height: 1568px; background: #070707; overflow: hidden; }
+  #stage { position: absolute; inset: 0; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 50%, #141414 0%, #070707 65%); }
+  svg#deco { position: absolute; inset: 0; }
+  .abs { position: absolute; white-space: nowrap; color: #fff; }
+  .serif { font-family: 'Playfair Display', serif; font-weight: 800; font-variant-numeric: lining-nums; }
+  .sans { font-family: 'Sora', sans-serif; }
+  .glow { text-shadow: 0 0 16px rgba(255,255,255,.18); }
+
+  #logoPrivacy { left: 110px; top: 70px; font-size: 70px; letter-spacing: -1.5px; line-height: 1; }
+  #logoBox { left: 112px; top: 143px; width: 126px; height: 36px; background: #fff; border-radius: 7px;
+             display: flex; align-items: center; justify-content: space-evenly; padding: 0 10px; }
+  #logoBox span { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 34px; color: #000; line-height: 1; height: 24px; }
+  #logoConsent { left: 244px; top: 139px; font-size: 38px; letter-spacing: -1px; line-height: 1; }
+
+  #label { left: 112px; top: 262px; font-size: 20px; letter-spacing: 6.5px; line-height: 24px; }
+  #labelRule { position: absolute; top: 274px; width: 108px; height: 1.5px; background: #fff; }
+  #title { left: 108px; top: 298px; font-size: 90px; letter-spacing: -3px; line-height: 96px; }
+
+  /* chat window mock */
+  #win { position: absolute; left: 112px; top: 530px; width: 1030px; height: 446px; border: 2.5px solid #fff; border-radius: 18px; overflow: hidden;
+         box-shadow: 0 0 18px rgba(255,255,255,.12), inset 0 0 18px rgba(255,255,255,.05); background: rgba(0,0,0,.5); }
+  #win .bar { height: 58px; border-bottom: 2px solid #fff; display: flex; align-items: center; gap: 12px; padding: 0 24px; }
+  #win .bar i { width: 14px; height: 14px; border: 2px solid #fff; border-radius: 50%; display: block; }
+  #win .bar .t { margin-left: 14px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 3px; color: #fff; }
+  #win .bar .ex { margin-left: auto; font-family: 'Sora', sans-serif; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,.55); }
+  #win .who { position: absolute; right: 40px; top: 84px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 2.5px; color: rgba(255,255,255,.7); }
+  #win .msg { position: absolute; right: 40px; top: 110px; width: 700px; padding: 22px 26px; border: 2px solid #fff; border-radius: 16px 16px 4px 16px;
+              font-family: 'Sora', sans-serif; font-size: 22px; line-height: 34px; color: #fff; letter-spacing: -.3px; white-space: normal; }
+  #win .pii { border: 2px solid #FF4D4F; border-radius: 6px; padding: 0 6px; margin: 0 1px; color: #fff; font-weight: 700; white-space: nowrap; }
+  #win .alert { position: absolute; left: 40px; right: 40px; top: 254px; padding: 18px 22px; border: 2px solid #FF4D4F; border-radius: 12px;
+                display: flex; align-items: center; gap: 18px; background: rgba(255,77,79,.07); }
+  #win .alert .h { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3px; color: #fff; }
+  #win .alert .s { margin-top: 5px; font-family: 'Sora', sans-serif; font-size: 18.5px; color: #e6e6e6; letter-spacing: -.2px; }
+  #win .input { position: absolute; left: 40px; right: 40px; bottom: 26px; height: 54px; border: 1.5px dashed rgba(255,255,255,.6); border-radius: 999px;
+                display: flex; align-items: center; padding: 0 8px 0 24px; font-family: 'Sora', sans-serif; font-size: 18px; color: rgba(255,255,255,.5); }
+  #win .input .send { margin-left: auto; width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,.5); display: flex; align-items: center; justify-content: center; }
+
+  /* help */
+  #helpHead { position: absolute; left: 112px; top: 1030px; display: flex; align-items: center; gap: 14px;
+              font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 4px; color: #fff; }
+  #helpHead .mini { width: 52px; height: 18px; background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: space-evenly; padding: 0 4px; }
+  #helpHead .mini span { font-weight: 700; font-size: 17px; color: #000; line-height: 1; height: 12px; letter-spacing: 0; }
+  #helpRule { position: absolute; left: 632px; top: 1040px; width: 510px; height: 1.5px; background: #fff; opacity: .8; }
+  .help { position: absolute; top: 1074px; width: 330px; height: 260px; border: 2px solid #fff; border-radius: 16px; padding: 26px 26px;
+          box-shadow: 0 0 14px rgba(255,255,255,.1); background: rgba(0,0,0,.45); }
+  .help .top { display: flex; align-items: center; justify-content: space-between; }
+  .help .n { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3px; color: #fff; opacity: .7; }
+  .help .mod { display: flex; align-items: center; gap: 8px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 2px; color: #fff; }
+  .help .v { margin-top: 28px; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 40px; letter-spacing: -1.2px; line-height: 1; color: #fff; }
+  .help .txt { margin-top: 16px; font-family: 'Sora', sans-serif; font-size: 19.5px; line-height: 28px; color: #e2e2e2; letter-spacing: -.3px; white-space: normal; }
+
+  #closing { left: 112px; top: 1424px; font-size: 44px; letter-spacing: -1.4px; line-height: 48px; }
+  #site { right: 160px; top: 1474px; font-size: 22px; letter-spacing: 1px; font-weight: 600; text-align: right; }
+  #site small { display: block; font-size: 15px; letter-spacing: 4px; font-weight: 400; opacity: .75; margin-bottom: 8px; }
+  #grain { position: absolute; inset: 0; opacity: .06; mix-blend-mode: screen; pointer-events: none; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg id="deco" width="1254" height="1568" viewBox="0 0 1254 1568">
+    <g stroke="#fff" fill="none" stroke-linecap="round">
+      <line x1="60" y1="0" x2="60" y2="1568" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="1035" y1="0" x2="1035" y2="250" stroke-width="1.4" stroke-opacity=".75"/>
+      <line x1="560" y1="137" x2="1254" y2="137" stroke-width="1.4" stroke-opacity=".75"/>
+      <circle cx="1110" cy="-120" r="420" stroke-width="1.8"/>
+      <circle cx="1110" cy="-120" r="375" stroke-width="2" stroke-dasharray="9 9"/>
+      <line x1="1198" y1="530" x2="1198" y2="1400" stroke-width="1.2" stroke-opacity=".5"/>
+      <line x1="0" y1="1400" x2="1254" y2="1400" stroke-width="1.5" stroke-opacity=".85"/>
+      <circle cx="1254" cy="1568" r="95" stroke-width="1.8"/>
+      <circle cx="1254" cy="1568" r="140" stroke-width="2" stroke-dasharray="9 9"/>
+    </g>
+    <g id="dotsTR" fill="#fff"></g>
+    <circle cx="1035" cy="137" r="9" fill="#fff"/>
+    <circle cx="60" cy="1400" r="8.5" fill="#fff"/>
+    <circle cx="1198" cy="1400" r="8" fill="#fff"/>
+  </svg>
+
+  <div class="abs serif glow" id="logoPrivacy">Privacy</div>
+  <div class="abs" id="logoBox"><span>*</span><span>*</span><span>*</span></div>
+  <div class="abs serif glow" id="logoConsent">Consent</div>
+
+  <div class="abs sans" id="label">IA GENERATIVA &amp; DLP</div>
+  <div id="labelRule"></div>
+  <div class="abs serif glow" id="title">Seu time está colando<br>dados da empresa na IA?</div>
+
+  <div id="win">
+    <div class="bar"><i></i><i></i><i></i><span class="t">ASSISTENTE DE IA</span><span class="ex">SIMULAÇÃO</span></div>
+    <div class="who">COLABORADOR</div>
+    <div class="msg">Resuma esse contrato do cliente <span class="pii">João da Silva</span>, CPF <span class="pii">123.456.789-00</span>, pago com o cartão <span class="pii">final 4432</span>.</div>
+    <div class="alert">
+      <svg width="40" height="40" viewBox="0 0 40 40" style="flex:none" fill="none" stroke="#FF4D4F" stroke-width="2.6" stroke-linecap="round"><circle cx="20" cy="20" r="17.5"/><path d="M8 32 L32 8"/></svg>
+      <div><div class="h">ENVIO BLOQUEADO</div><div class="s">Dados pessoais detectados: nome, CPF e cartão. Política de proteção aplicada.</div></div>
+    </div>
+    <div class="input">Digite sua mensagem…<span class="send"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 H16 M11 5 L16 10 L11 15"/></svg></span></div>
+  </div>
+
+  <div id="helpHead"><span class="mini"><span>*</span><span>*</span><span>*</span></span>COMO A PRIVACY CONSENT AJUDA</div>
+  <div id="helpRule"></div>
+  <div id="helps"></div>
+
+  <div class="abs serif glow" id="closing">Use a IA.<br>Sem entregar seus dados.</div>
+  <div class="abs sans" id="site"><small>CONHEÇA A PRIVACY CONSENT</small>privacyconsent.com.br</div>
+
+  <canvas id="grain" width="627" height="784" style="width:1254px;height:1568px"></canvas>
+</div>
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+  const lbl = document.getElementById('label');
+  const placeRule = () => document.getElementById('labelRule').style.left = (lbl.offsetLeft + lbl.offsetWidth + 22) + 'px';
+  placeRule();
+
+  const ok = '<svg width="16" height="16" viewBox="0 0 28 28" style="flex:none"><circle cx="14" cy="14" r="14" fill="#2FD27A"/><path d="M8 14.6 L12.2 18.6 L20.2 9.8" fill="none" stroke="#070707" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const helps = [
+    ['Identifica', 'DLP', 'Reconhece dados pessoais e sensíveis antes que saiam da empresa.'],
+    ['Bloqueia', 'DLP', 'Aplica políticas que barram o envio de informações confidenciais.'],
+    ['Controla', 'WEB FILTER', 'Define quais sites e ferramentas de IA podem ser acessados.'],
+  ];
+  document.getElementById('helps').innerHTML = helps.map(([v, m, t], i) => `
+    <div class="help" style="left:${112 + i * 350}px">
+      <div class="top"><span class="n">0${i + 1}</span><span class="mod">${ok}${m}</span></div>
+      <div class="v">${v}</div>
+      <div class="txt">${t}</div>
+    </div>`).join('');
+
+  function dots(g, x0, y0, cols, rows, dx, dy, r) {
+    for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x0 + i * dx); c.setAttribute('cy', y0 + j * dy); c.setAttribute('r', r);
+      g.appendChild(c);
+    }
+  }
+  dots(document.getElementById('dotsTR'), 1063, 30, 5, 4, 29.5, 28, 3.4);
+  const ctx = document.getElementById('grain').getContext('2d');
+  const img = ctx.createImageData(627, 784); let seed = 8642;
+  for (let k = 0; k < img.data.length; k += 4) {
+    seed = (seed * 16807) % 2147483647; const v = seed / 2147483647 * 255 | 0;
+    img.data[k] = img.data[k + 1] = img.data[k + 2] = v; img.data[k + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  window.ready = document.fonts.ready.then(() => { placeRule(); return true; });
+</script>
+</body>
+</html>
