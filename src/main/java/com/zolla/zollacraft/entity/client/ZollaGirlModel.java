@@ -21,11 +21,13 @@ import net.minecraft.util.math.MathHelper;
 public class ZollaGirlModel<T extends ZollaGirlEntity> extends EntityModel<T> {
 
     private final ModelRenderer head;
+    private final ModelRenderer hat;
     private final ModelRenderer earRight;
     private final ModelRenderer earLeft;
     private final ModelRenderer bangs;
 
     private final ModelRenderer body;
+    private final ModelRenderer jacket;
     private final ModelRenderer backHair;
     private final ModelRenderer skirt;
     private final ModelRenderer tail;
@@ -44,30 +46,42 @@ public class ZollaGirlModel<T extends ZollaGirlEntity> extends EntityModel<T> {
         head.setRotationPoint(0.0F, 0.0F, 0.0F);
         head.setTextureOffset(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F);
 
+        // Segunda camada (volume do cabelo) - hat layer da skin.
+        hat = new ModelRenderer(this);
+        hat.setRotationPoint(0.0F, 0.0F, 0.0F);
+        hat.setTextureOffset(32, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.5F);
+        head.addChild(hat);
+
         // Orelhas de gato (filhas da cabeca).
         earRight = new ModelRenderer(this);
-        earRight.setRotationPoint(-2.5F, -8.0F, 0.0F);
-        earRight.setTextureOffset(64, 0).addBox(-2.0F, -4.0F, -0.5F, 3.0F, 4.0F, 1.0F, 0.0F);
+        earRight.setRotationPoint(-2.5F, -7.5F, 0.0F);
+        earRight.setTextureOffset(64, 0).addBox(-2.0F, -5.0F, -0.5F, 4.0F, 5.0F, 1.0F, 0.0F);
         earRight.rotateAngleZ = -0.35F;
         head.addChild(earRight);
 
         earLeft = new ModelRenderer(this);
-        earLeft.setRotationPoint(2.5F, -8.0F, 0.0F);
+        earLeft.setRotationPoint(2.5F, -7.5F, 0.0F);
         earLeft.mirror = true;
-        earLeft.setTextureOffset(64, 8).addBox(-1.0F, -4.0F, -0.5F, 3.0F, 4.0F, 1.0F, 0.0F);
+        earLeft.setTextureOffset(64, 8).addBox(-2.0F, -5.0F, -0.5F, 4.0F, 5.0F, 1.0F, 0.0F);
         earLeft.rotateAngleZ = 0.35F;
         head.addChild(earLeft);
 
         // Franja / cabelo da frente (filha da cabeca).
         bangs = new ModelRenderer(this);
         bangs.setRotationPoint(0.0F, 0.0F, 0.0F);
-        bangs.setTextureOffset(0, 32).addBox(-4.5F, -8.5F, -4.5F, 9.0F, 5.0F, 9.0F, 0.0F);
+        bangs.setTextureOffset(90, 16).addBox(-4.5F, -8.5F, -4.5F, 9.0F, 5.0F, 9.0F, 0.0F);
         head.addChild(bangs);
 
         // ---------- CORPO ----------
         body = new ModelRenderer(this);
         body.setRotationPoint(0.0F, 0.0F, 0.0F);
         body.setTextureOffset(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.0F);
+
+        // Segunda camada do corpo (babados do vestido).
+        jacket = new ModelRenderer(this);
+        jacket.setRotationPoint(0.0F, 0.0F, 0.0F);
+        jacket.setTextureOffset(16, 32).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.25F);
+        body.addChild(jacket);
 
         // Cabelo longo nas costas (filho do corpo, vai ate perto das pernas).
         backHair = new ModelRenderer(this);
@@ -92,21 +106,35 @@ public class ZollaGirlModel<T extends ZollaGirlEntity> extends EntityModel<T> {
         armRight = new ModelRenderer(this);
         armRight.setRotationPoint(-5.0F, 2.0F, 0.0F);
         armRight.setTextureOffset(40, 16).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        ModelRenderer armRightOverlay = new ModelRenderer(this);
+        armRightOverlay.setTextureOffset(40, 32).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F);
+        armRight.addChild(armRightOverlay);
 
         armLeft = new ModelRenderer(this);
         armLeft.setRotationPoint(5.0F, 2.0F, 0.0F);
         armLeft.mirror = true;
         armLeft.setTextureOffset(32, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        ModelRenderer armLeftOverlay = new ModelRenderer(this);
+        armLeftOverlay.mirror = true;
+        armLeftOverlay.setTextureOffset(48, 48).addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F);
+        armLeft.addChild(armLeftOverlay);
 
         // ---------- PERNAS ----------
         legRight = new ModelRenderer(this);
         legRight.setRotationPoint(-1.9F, 12.0F, 0.0F);
         legRight.setTextureOffset(0, 16).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        ModelRenderer legRightOverlay = new ModelRenderer(this);
+        legRightOverlay.setTextureOffset(0, 32).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F);
+        legRight.addChild(legRightOverlay);
 
         legLeft = new ModelRenderer(this);
         legLeft.setRotationPoint(1.9F, 12.0F, 0.0F);
         legLeft.mirror = true;
         legLeft.setTextureOffset(16, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        ModelRenderer legLeftOverlay = new ModelRenderer(this);
+        legLeftOverlay.mirror = true;
+        legLeftOverlay.setTextureOffset(0, 48).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F);
+        legLeft.addChild(legLeftOverlay);
     }
 
     @Override

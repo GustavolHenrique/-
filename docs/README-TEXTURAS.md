@@ -21,20 +21,32 @@ Cada caixa abaixo lista o **offset (u,v)** e o **tamanho (largura × altura × p
 do cubo. Na textura, a caixa ocupa um retângulo de largura `2·(w+d)` e altura `d+h`
 a partir de `(u,v)` — é o "desdobramento" padrão do Minecraft (topo, baixo, 4 lados).
 
-| Parte            | offset (u,v) | tamanho (w×h×d) | observação                    |
-|------------------|--------------|-----------------|-------------------------------|
-| Cabeça           | (0, 0)       | 8×8×8           | rosto = face frontal          |
-| Orelha direita   | (64, 0)      | 3×4×1           | preta, interior rosa          |
-| Orelha esquerda  | (64, 8)      | 3×4×1           | espelhada                     |
-| Franja (frente)  | (0, 32)      | 9×5×9           | cabelo por cima da cabeça     |
-| Cabelo das costas| (64, 20)     | 9×22×1          | cai até perto das pernas      |
-| Corpo / roupa    | (16, 16)     | 8×12×4          | vestido branco + fita vermelha|
-| Saia             | (96, 40)     | 9×6×5           | branca, borda vermelha        |
-| Cauda            | (80, 0)      | 2×12×2          | preta                         |
-| Braço direito    | (40, 16)     | 4×12×4          | pele / manga preta curta      |
-| Braço esquerdo   | (32, 48)     | 4×12×4          | espelhado                     |
-| Perna direita    | (0, 16)      | 4×12×4          | meia branca                   |
-| Perna esquerda   | (16, 48)     | 4×12×4          | espelhado                     |
+A **metade esquerda (0–64)** é uma **skin de jogador padrão 64×64** — inclusive
+com a **segunda camada** (hat/jaqueta), que o modelo renderiza:
+
+| Parte (base)     | offset (u,v) | tamanho (w×h×d) | 2ª camada (overlay) |
+|------------------|--------------|-----------------|---------------------|
+| Cabeça           | (0, 0)       | 8×8×8           | (32, 0) — cabelo    |
+| Corpo / roupa    | (16, 16)     | 8×12×4          | (16, 32) — babados  |
+| Braço direito    | (40, 16)     | 4×12×4          | (40, 32)            |
+| Braço esquerdo   | (32, 48)     | 4×12×4          | (48, 48)            |
+| Perna direita    | (0, 16)      | 4×12×4          | (0, 32)             |
+| Perna esquerda   | (16, 48)     | 4×12×4          | (0, 48)             |
+
+As **partes extras de catgirl** usam a metade direita:
+
+| Parte extra      | offset (u,v) | tamanho (w×h×d) | observação                 |
+|------------------|--------------|-----------------|----------------------------|
+| Orelha direita   | (64, 0)      | 4×5×1           | ponta de gato              |
+| Orelha esquerda  | (64, 8)      | 4×5×1           | espelhada                  |
+| Cabelo das costas| (64, 20)     | 9×22×1          | cai até perto das pernas   |
+| Cauda            | (80, 0)      | 2×12×2          | mecha de cabelo/cauda      |
+| Franja (frente)  | (90, 16)     | 9×5×9           | cabelo por cima da cabeça  |
+| Saia             | (96, 40)     | 9×6×5           | avental/saia               |
+
+> A textura atual foi montada automaticamente a partir da skin que você forneceu
+> (`compose.py`), recortando cada peça extra e encaixando nesses slots. Se trocar
+> a skin base, rode o mesmo processo ou ajuste os offsets aqui e no modelo.
 
 > O **rosto** fica na **face frontal da cabeça**: retângulo `x 8–16, y 8–16`.
 > É ali que vão os olhos vermelhos e a boquinha.
