@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="Unlicense"
+issueTrackerURL="https://github.com/gustavolhenrique/-/issues"
+
+[[mods]]
+modId="zollacraft"
+version="1.0.0"
+displayName="Zolla Craft"
+authors="Zolla"
+description='''
+Zolla Craft adiciona garotas de anime (estilo catgirl) feitas de cubos como aliadas que podem ser domesticadas e lutam ao seu lado.
+'''
+
+[[dependencies.zollacraft]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.zollacraft]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5,1.17)"
+    ordering="NONE"
+    side="BOTH"
